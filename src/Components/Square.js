@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const Square = (props) => {
+const Square = ({ value, onClick}) => {
   return (
-    <button type='button'>{props.value}</button>
-  )
-}
+    <button type="button" className="square" onClick={onClick}>
+      {value}
+    </button>
+  );
+};
 
-export default Square
+export default Square;
 
 

@@ -10,9 +10,7 @@
     "format": "prettier --write src/**/*.js",
     "format:lint": "npm run format && npm run lint",
     "clear": "rimraf dist .parcel-cache"
-    
   },
-  
   "resolutions": {
     "@babel/preset-env": "7.13.8"
   },
@@ -24,7 +22,8 @@
   "devDependencies": {
     "@babel/core": "^7.14.2",
     "babel-preset-nano-react-app": "^0.1.0",
-    "parcel": "1.12.4"
+    "parcel": "1.12.4",
+    "sass": "^1.32.13"
   },
   "babel": {
     "presets": [
