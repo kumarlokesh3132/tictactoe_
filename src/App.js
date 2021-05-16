@@ -1,46 +1,41 @@
-import React,{useState} from 'react';
-import Board from './Components/Board';
-import {calculateWinner} from './helper';
+import React,{useState} from 'react'
+import Board from './Components/Board'
+import { calculateWinner } from './helper'
 import './Styles/root.scss'
 
 const App = () => {
-  
-    const [board,setboard]=useState(Array(9).fill(null))
-    const [isNext,setisNext]=useState(0)
-    const winner=calculateWinner(board)
-    const message=winner ? `winner is ${winner}`:`Next playe is ${isNext ? 'X':'O'}`
-    const handlesquare=(position)=>
-    {
-     if(board[position])
-     {
-       return 0;
-     }
-     
-     setboard((prev) => {
-       return prev.map((square,posv)=>{
-         if(posv === position){
-           return isNext ? 'X': 'O';
-         }
-         return square;
-       })
-       }) 
-     setisNext((prev)=>{
-      if(prev===0)
-      {
-        return 1;
-      }
+  const [initial,update]=useState(Array(9).fill(null))
+  const [isnext,updatenext]=useState(1)
+  const winner=calculateWinner(initial)
+  const message=winner ? `winner is ${winner}`:`next palyer is ${isnext ? 'X':'O'}`
+  const clickfunc=(position) =>{
+    if(initial[position] || winner){
       return 0;
-     })
     }
+    update((prev)=>{
+      return prev.map((start,index)=>{
+        if(index===position)
+        {
+          return isnext ?'X': 'O';
+        }
+        return start;
+      })
+    })
+    updatenext((prevs)=>{
+      if(prevs===1)
+      {
+        return 0;
+      }
+       return 1;
+    })
+  }
   return (
     <div className='app'>
-      <h1>TIC-TOE</h1>
+      <h1>Tic Tac Toe</h1>
       <h2>{message}</h2>
-      <Board board={board} handlesquare={handlesquare} />
-      
+      <Board initial={initial} clickfunc={clickfunc} />
     </div>
   )
 }
 
 export default App
-

@@ -1,33 +1,36 @@
-import React from 'react';
-import Square from'./Square'
+import React from 'react'
+import Square from './Square'
 
-      function Board({board,handlesquare}) {
-     const rendersquare=(position)=>
-     {return(
-      <Square value={board[position]} onClick={()=>handlesquare(position)}/>
-     )
-     }
-     
+const Board = ({initial,clickfunc}) => {
+  
+
+
+  const render=(position) => {
+    return(
+    <Square values={initial[position]} onClick={()=> clickfunc(position)} />
+    )
+  }
+  
   return (
     <div className='board'>
       <div className='board-row'>
-      {rendersquare(0)}
-      {rendersquare(1)}
-      {rendersquare(2)}      
+       {render(0)}
+       {render(1)}
+       {render(2)}
+      </div>
+       <div className='board-row'>
+       {render(3)}
+       {render(4)}
+       {render(5)}
       </div>
       <div className='board-row'>
-      {rendersquare(3)}
-      {rendersquare(4)}
-      {rendersquare(5)}
+       {render(6)}
+       {render(7)}
+       {render(8)}
       </div>
-      <div className='board-row'>
-      {rendersquare(6)}
-      {rendersquare(7)}
-      {rendersquare(8)}
-      </div>
-      
     </div>
-  )
+    )
+  
 }
 
 export default Board
