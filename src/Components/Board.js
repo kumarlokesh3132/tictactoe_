@@ -1,13 +1,13 @@
 import React from 'react'
 import Square from './Square'
 
-const Board = ({initial,clickfunc}) => {
+const Board = ({initial,handleSquareClick}) => {
   
 
 
   const render=(position) => {
     return(
-    <Square values={initial[position]} onClick={()=> clickfunc(position)} />
+    <Square values={initial[position]} onClick={()=> handleSquareClick(position)} />
     )
   }
   
